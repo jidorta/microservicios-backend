@@ -1,0 +1,12 @@
+spring.application.name=microservicio-zuul
+server.port=8090
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+zuul.routes.usuarios.service-id=microservicios-usuarios
+zuul.routes.usuarios.path=/api/alumnos/**
+
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=1000000
+
+zuul.host.connect-timeout-millis=10000
+
+zuul.host.socket-timeout-millis=1000000
+
