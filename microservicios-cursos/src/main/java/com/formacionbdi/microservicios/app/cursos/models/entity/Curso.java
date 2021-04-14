@@ -10,13 +10,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
 import com.formacionbdi.microservicios.commons.alumnos.models.entity.Alumno;
+import com.formacionbdi.microservicios.commons.examenes.models.entity.Examen;
 
 @Entity
 @Table(name="cursos")
@@ -25,6 +28,8 @@ public class Curso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotEmpty
 	private String nombre;
 	
 	@Column (name="create_at")
@@ -34,8 +39,12 @@ public class Curso {
 	@OneToMany(fetch= FetchType.LAZY)
 	private List<Alumno>alumnos;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	private List<Examen> examenes;
+	
 	public Curso() {
 		this.alumnos = new ArrayList<>();
+		this.examenes = new ArrayList<>();
 	}
 
 	public Long getId() {
@@ -77,6 +86,25 @@ public class Curso {
 	
 	public void removeAlumno(Alumno alumno) {
 		this.alumnos.remove(alumno);
+	}
+	
+	
+
+	public List<Examen> getExamenes() {
+		return examenes;
+	}
+
+	public void setExamenes(List<Examen> examenes) {
+		this.examenes = examenes;
+	}
+	
+	
+	public void addExamen(Examen examen) {
+		this.examenes.add(examen);
+	}
+	
+	public void removeExamen(Examen examen) {
+		this.examenes.remove(examen);
 	}
 
 	@PrePersist

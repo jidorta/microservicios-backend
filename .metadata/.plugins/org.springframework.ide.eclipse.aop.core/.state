@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="microservicios-eureka"/>
-<aop-project name="microservicios-zuul"/>
 <aop-project name="commons-alumnos"/>
+<aop-project name="microservicios-zuul"/>
 <aop-project name="commons-microservicios"/>
+<aop-project name="commons-examenes"/>
+<aop-project name="microservicios-examenes"/>
 <aop-project name="microservicios-cursos"/>
 <aop-project name="microservicios-usuarios"/>
 </aop-reference-model>
